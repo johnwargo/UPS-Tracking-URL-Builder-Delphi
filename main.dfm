@@ -88,6 +88,7 @@ object frmMain: TfrmMain
     Caption = 'Copy'
     TabOrder = 3
     Visible = False
+    OnClick = btnCopyClick
   end
   object btnOpen: TRzButton
     Left = 248
@@ -97,6 +98,16 @@ object frmMain: TfrmMain
     TabOrder = 4
     Visible = False
     OnClick = btnOpenClick
+  end
+  object chkAutoClose: TRzCheckBox
+    Left = 8
+    Top = 68
+    Width = 79
+    Height = 19
+    Caption = 'Auto close'
+    Checked = True
+    State = cbChecked
+    TabOrder = 5
   end
   object RzVersionInfo: TRzVersionInfo
     Left = 482

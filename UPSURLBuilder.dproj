@@ -126,8 +126,8 @@
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Keys>CompanyName=John M. Wargo;FileDescription=$(MSBuildProjectName);FileVersion=0.0.0.9;InternalName=;LegalCopyright=Copyright 2022 John M. Wargo;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <VerInfo_Build>9</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=John M. Wargo;FileDescription=$(MSBuildProjectName);FileVersion=0.0.0.10;InternalName=;LegalCopyright=Copyright 2022 John M. Wargo;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>10</VerInfo_Build>
         <Icon_MainIcon>favicon.ico</Icon_MainIcon>
         <UWP_DelphiLogo44>..\..\frameworks\react\ups logo\93e6ab0f61f320ae8b323b4724ea53f8.ico\android-icon-36x36.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>..\..\frameworks\react\ups logo\93e6ab0f61f320ae8b323b4724ea53f8.ico\android-icon-144x144.png</UWP_DelphiLogo150>
