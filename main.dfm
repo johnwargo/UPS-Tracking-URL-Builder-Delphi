@@ -1,10 +1,10 @@
 object frmMain: TfrmMain
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
+  BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'UPS Tracking URL Launcher'
-  ClientHeight = 113
+  ClientHeight = 128
   ClientWidth = 628
   Color = clBtnFace
   Constraints.MaxWidth = 640
@@ -28,22 +28,9 @@ object frmMain: TfrmMain
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object lblTrackingURL: TRzURLLabel
-    Left = 145
-    Top = 60
-    Width = 85
-    Height = 20
-    Caption = 'Tracking URL'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clHighlight
-    Font.Height = -15
-    Font.Name = 'Segoe UI'
-    Font.Style = [fsUnderline]
-    ParentFont = False
-  end
   object StatusBar: TRzStatusBar
     Left = 0
-    Top = 94
+    Top = 109
     Width = 628
     Height = 19
     SimpleCaption = 'By John M. Wargo'
@@ -88,19 +75,42 @@ object frmMain: TfrmMain
     TabOrder = 1
     OnChange = editTrackingNumberChange
   end
+  object btnClose: TRzButton
+    Left = 545
+    Top = 64
+    Caption = 'Close'
+    TabOrder = 2
+    OnClick = btnCloseClick
+  end
+  object btnCopy: TRzButton
+    Left = 145
+    Top = 64
+    Caption = 'Copy'
+    TabOrder = 3
+    Visible = False
+  end
+  object btnOpen: TRzButton
+    Left = 248
+    Top = 64
+    Width = 153
+    Caption = 'Open Tracking URL'
+    TabOrder = 4
+    Visible = False
+    OnClick = btnOpenClick
+  end
   object RzVersionInfo: TRzVersionInfo
-    Left = 362
-    Top = 43
+    Left = 482
+    Top = 11
   end
   object RzFormState: TRzFormState
     RegIniFile = RzRegIniFile
-    Left = 446
-    Top = 43
+    Left = 558
+    Top = 11
   end
   object RzRegIniFile: TRzRegIniFile
     Path = 'UPS Tracking URL Launcher'
     PathType = ptRegistry
-    Left = 263
-    Top = 42
+    Left = 407
+    Top = 10
   end
 end

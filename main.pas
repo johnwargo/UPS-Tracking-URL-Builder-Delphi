@@ -1,10 +1,11 @@
-unit main;
+﻿unit main;
 
 interface
 
 uses
   ClipBrd,
-  RzLabel, RzEdit, RzPanel, RzStatus, RzForms, RzCommon,
+  RzLabel, RzEdit, RzPanel, RzStatus, RzForms, RzCommon, RzButton,
+  shellApi,
   System.SysUtils, System.Variants, System.Classes,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Graphics,
   Vcl.StdCtrls, Vcl.Mask,
@@ -15,14 +16,18 @@ type
     StatusBar: TRzStatusBar;
     RzLabel1: TRzLabel;
     editTrackingNumber: TRzEdit;
-    lblTrackingURL: TRzURLLabel;
     RzStatusPane1: TRzStatusPane;
     RzVersionInfoStatus1: TRzVersionInfoStatus;
     RzVersionInfo: TRzVersionInfo;
     RzFormState: TRzFormState;
     RzRegIniFile: TRzRegIniFile;
+    btnClose: TRzButton;
+    btnCopy: TRzButton;
+    btnOpen: TRzButton;
     procedure editTrackingNumberChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure btnCloseClick(Sender: TObject);
+    procedure btnOpenClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,36 +36,50 @@ type
 
 var
   frmMain: TfrmMain;
+  trackingUrl: String;
 
 implementation
 
 {$R *.dfm}
 
+procedure TfrmMain.btnOpenClick(Sender: TObject);
+begin
+  if Length(trackingUrl) > 0 then begin
+    ShellExecute(0, 'open', PChar(trackingUrl), '', '', SW_SHOWNORMAL);
+    Application.Terminate();
+  end else begin
+    showMessage('Nothing to do here, the tracking URL is empty');
+  end;
+end;
+
+procedure TfrmMain.btnCloseClick(Sender: TObject);
+begin
+  Application.Terminate();
+end;
+
 procedure TfrmMain.editTrackingNumberChange(Sender: TObject);
 var
-  trackingNumber, trackingURL: String;
+  haveTrackingNumber: Boolean;
+  trackingNumber: String;
 begin
-  // Input field value changed
-  frmMain.lblTrackingURL.Caption := '';
+  // Input field value changed, get the new tracking number
   trackingNumber := editTrackingNumber.Text;
-  // Do we have a tracking number?
-  if length(trackingNumber) > 0 then begin
-    // Build the URL
-    trackingURL :=
+  haveTrackingNumber := Length(trackingNumber) > 0;
+  btnCopy.Visible := haveTrackingNumber;
+  btnOpen.Visible := haveTrackingNumber;
+
+  if haveTrackingNumber then begin
+    trackingUrl :=
       'https://www.ups.com/track?loc=en_US&requester=QUIC&tracknum=' +
       trackingNumber + '/trackdetails';
-    // Unhide the launch URL link
-    frmMain.lblTrackingURL.Caption := 'Tracking URL';
-    frmMain.lblTrackingURL.URL := trackingURL;
-    // Copy the URL to the clipboard
-    // Clipboard.AsText := trackingURL;
+  end else begin
+    trackingUrl := '';
   end;
 end;
 
 procedure TfrmMain.FormActivate(Sender: TObject);
 begin
   frmMain.RzVersionInfo.FilePath := Application.ExeName;
-  frmMain.lblTrackingURL.Caption := '';
 end;
 
 end.
