@@ -40,7 +40,7 @@ object frmMain: TfrmMain
     BorderWidth = 0
     Color = 15987699
     TabOrder = 0
-    ExplicitTop = 85
+    ExplicitTop = 100
     ExplicitWidth = 622
     object RzStatusPane1: TRzStatusPane
       Left = 0
@@ -110,8 +110,8 @@ object frmMain: TfrmMain
     TabOrder = 5
   end
   object RzVersionInfo: TRzVersionInfo
-    Left = 482
-    Top = 11
+    Left = 443
+    Top = 14
   end
   object RzFormState: TRzFormState
     RegIniFile = RzRegIniFile
@@ -121,7 +121,7 @@ object frmMain: TfrmMain
   object RzRegIniFile: TRzRegIniFile
     Path = 'UPS Tracking URL Launcher'
     PathType = ptRegistry
-    Left = 407
-    Top = 10
+    Left = 365
+    Top = 13
   end
 end
