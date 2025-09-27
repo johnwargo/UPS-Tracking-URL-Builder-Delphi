@@ -2,10 +2,10 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   BorderIcons = []
-  BorderStyle = bsDialog
-  Caption = 'UPS Tracking URL Launcher'
-  ClientHeight = 128
-  ClientWidth = 628
+  BorderStyle = bsSingle
+  Caption = 'UPS Tracking URL Builder'
+  ClientHeight = 131
+  ClientWidth = 624
   Color = clBtnFace
   Constraints.MaxWidth = 640
   Font.Charset = DEFAULT_CHARSET
@@ -30,8 +30,8 @@ object frmMain: TfrmMain
   end
   object StatusBar: TRzStatusBar
     Left = 0
-    Top = 109
-    Width = 628
+    Top = 112
+    Width = 624
     Height = 19
     SimpleCaption = 'By John M. Wargo'
     BorderInner = fsNone
@@ -40,19 +40,19 @@ object frmMain: TfrmMain
     BorderWidth = 0
     Color = 15987699
     TabOrder = 0
-    ExplicitTop = 100
+    ExplicitTop = 104
     ExplicitWidth = 622
     object RzStatusPane1: TRzStatusPane
       Left = 0
       Top = 0
-      Width = 528
+      Width = 524
       Height = 19
       Align = alClient
       Caption = 'By John M. Wargo'
       ExplicitWidth = 497
     end
-    object RzVersionInfoStatus1: TRzVersionInfoStatus
-      Left = 528
+    object RzVersionInfoStatus: TRzVersionInfoStatus
+      Left = 524
       Top = 0
       Height = 19
       Align = alRight
@@ -60,6 +60,7 @@ object frmMain: TfrmMain
       FieldLabelColor = clBtnText
       Field = vifFileVersion
       VersionInfo = RzVersionInfo
+      FileVersionFormat = fvfFull
       ExplicitLeft = 476
     end
   end
@@ -78,6 +79,7 @@ object frmMain: TfrmMain
   object btnClose: TRzButton
     Left = 545
     Top = 64
+    Height = 30
     Caption = 'Close'
     TabOrder = 2
     OnClick = btnCloseClick
@@ -85,6 +87,7 @@ object frmMain: TfrmMain
   object btnCopy: TRzButton
     Left = 145
     Top = 64
+    Height = 30
     Caption = 'Copy'
     TabOrder = 3
     Visible = False
@@ -94,6 +97,7 @@ object frmMain: TfrmMain
     Left = 248
     Top = 64
     Width = 153
+    Height = 30
     Caption = 'Open Tracking URL'
     TabOrder = 4
     Visible = False
@@ -104,24 +108,25 @@ object frmMain: TfrmMain
     Top = 68
     Width = 79
     Height = 19
+    AutoSizeWidth = 79
     Caption = 'Auto close'
     Checked = True
     State = cbChecked
     TabOrder = 5
   end
   object RzVersionInfo: TRzVersionInfo
-    Left = 443
-    Top = 14
+    Left = 431
+    Top = 53
+  end
+  object RzRegIniFile: TRzRegIniFile
+    Path = 'Software\John Wargo\UPS URL Launcher'
+    PathType = ptRegistry
+    Left = 80
+    Top = 40
   end
   object RzFormState: TRzFormState
     RegIniFile = RzRegIniFile
-    Left = 558
-    Top = 11
-  end
-  object RzRegIniFile: TRzRegIniFile
-    Path = 'UPS Tracking URL Launcher'
-    PathType = ptRegistry
-    Left = 365
-    Top = 13
+    Left = 224
+    Top = 32
   end
 end

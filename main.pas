@@ -2,6 +2,8 @@ unit main;
 
 interface
 
+// TODO: Doesn't save FormState (position), not sure why.
+
 uses
   ClipBrd,
   RzLabel, RzEdit, RzPanel, RzStatus, RzForms, RzCommon, RzButton,
@@ -17,14 +19,14 @@ type
     RzLabel1: TRzLabel;
     editTrackingNumber: TRzEdit;
     RzStatusPane1: TRzStatusPane;
-    RzVersionInfoStatus1: TRzVersionInfoStatus;
+    RzVersionInfoStatus: TRzVersionInfoStatus;
     RzVersionInfo: TRzVersionInfo;
-    RzFormState: TRzFormState;
-    RzRegIniFile: TRzRegIniFile;
     btnClose: TRzButton;
     btnCopy: TRzButton;
     btnOpen: TRzButton;
     chkAutoClose: TRzCheckBox;
+    RzRegIniFile: TRzRegIniFile;
+    RzFormState: TRzFormState;
     procedure editTrackingNumberChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
@@ -49,6 +51,7 @@ begin
   // Copy the URL to the clipboard
   Clipboard.AsText := trackingUrl;
   if frmMain.chkAutoClose.Checked then begin
+    RzFormState.SaveState;
     // Close the app because we're done here
     Application.Terminate();
   end;
@@ -60,6 +63,7 @@ begin
     // Open the default browser with the tracking URL
     ShellExecute(0, 'open', PChar(trackingUrl), '', '', SW_SHOWNORMAL);
     if frmMain.chkAutoClose.Checked then begin
+      RzFormState.SaveState;
       // Close the app because we're done here
       Application.Terminate();
     end;
@@ -98,7 +102,7 @@ end;
 
 procedure TfrmMain.FormActivate(Sender: TObject);
 begin
-  frmMain.RzVersionInfo.FilePath := Application.ExeName;
+  frmMain.editTrackingNumber.SetFocus;
 end;
 
 end.
